@@ -11,3 +11,5 @@ Lets take a look inside the `src` folder.
 - `middlewares` -> they are just going to intercept the incoming requests where we can write our validators, authenticators etc.
 
 - `controllers` -> they are kind of the last middleware as post them you call business layer to execute the business logic. In controllers we just receive the incoming requests and data and then pass it to the business layer, and once business layer returns an output, we structure the API response in controllers and send the output.
+
+This is the entire overview of the app and its folders.
