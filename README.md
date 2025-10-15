@@ -12,4 +12,7 @@ Lets take a look inside the `src` folder.
 
 - `controllers` -> they are kind of the last middleware as post them you call business layer to execute the business logic. In controllers we just receive the incoming requests and data and then pass it to the business layer, and once business layer returns an output, we structure the API response in controllers and send the output.
 
+- `services` -> contains the business logic and interacts with repositories for data from the database.
+- `utils` -> contains helper methods, error classes etc.
+
 This is the entire overview of the app and its folders.
