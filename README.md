@@ -18,13 +18,29 @@ Lets take a look inside the `src` folder.
 ### Setup the project
 
 - Download this template from github nad open it in your favorite text editor.
+- Go inside the following path and execute the following command:
+```
+npm install
+```
 - In the root directory create a `.env` file and add the following env variables.
 
 ```
  PORT=<port of ur choice> 
 ```
 
-Inside the `src/config` folder create a file names as `config.json` and write this code:
+ex: 
+```
+    PORT = 3000
+```
+go inside the `src` folder and execute the following command:
+   ```
+      npx sequelize init
+   ```
+  - To run the server execute
+  ```
+  npm run dev
+
+<!-- Inside the `src/config` folder create a file names as `config.json` and write this code:
 {
   "development": {
     "username": "root",
@@ -49,4 +65,4 @@ Inside the `src/config` folder create a file names as `config.json` and write th
   }
 }
 - If you are setting up the dev environment, then write the username of your db, password of your db and in dialect mention whatever d you are using for ex: mysql, mariadb etc
-- If tou're setting up test or prod env, make sure you also replace the host with the hosted db url.
+- If tou're setting up test or prod env, make sure you also replace the host with the hosted db url. -->
