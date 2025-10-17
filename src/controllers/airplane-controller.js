@@ -12,7 +12,7 @@ async function createAirplane(req,res){
         .json({
             success:true,
             message:'Successfully created an airplane',
-            data:response,
+            data:airplane,
             error:{}
         })
     } catch (error) {
