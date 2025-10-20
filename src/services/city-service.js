@@ -1,25 +1,23 @@
-const {StatusCodes} = require('http-status-codes')
-const {CityRepository} = require('../repositories')
+const { StatusCodes } = require('http-status-codes')
+const { CityRepository } = require('../repositories')
 const AppError = require('../utils/errors/app-error')
 
 const cityRepository = new CityRepository()
 
-async function createCity(data){
-try {
+async function createCity(data) {
+    try {
         const city = await cityRepository.create(data)
-        return airplane
+        return city
     } catch (error) {
-        if(error.name = 'SequelizeValidationError'){
-            let explanation = []
-            error.errors.forEach((err)=>{
-                explanation.push(err.message)
-            })
-            throw new AppError("cannot create a new city object",StatusCodes.INTERNAL_SERVER_ERROR)
+        console.error("City creation failed:", error)
+        if (error.name === 'SequelizeValidationError') {
+            const explanation = (error.errors || []).map(err => err.message)
+            console.error("Validation errors:", explanation)
         }
-            throw new AppError("cannot create a new city object",StatusCodes.INTERNAL_SERVER_ERROR)
+        throw new AppError("Cannot create a new city object", StatusCodes.INTERNAL_SERVER_ERROR)
     }
 }
 
-module.exports={
+module.exports = {
     createCity
 }
