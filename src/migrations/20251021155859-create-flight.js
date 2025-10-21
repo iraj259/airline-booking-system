@@ -14,22 +14,22 @@ module.exports = {
       },
       airplane: {
         type: Sequelize.INTEGER,allowNull:false,references:{
-          table:'Airplanes',
-          field:'code'
+          model:'Airplanes',
+          key:'id'
         },
         onDelete:'CASCADE'
       },
       departureAirportId: {
-        type: Sequelize.INTEGER,allowNull:false,references:{
-          table:'Airports',
-          field:'code'
+        type: Sequelize.STRING,allowNull:false,references:{
+          model:'Airports',
+          key:'code'
         },
         onDelete:'CASCADE'
       },
       arrivalAirportId: {
-        type: Sequelize.INTEGER,allowNull:false,references:{
-          table:'Airports',
-          field:'id'
+        type: Sequelize.STRING,allowNull:false,references:{
+          model:'Airports',
+          key:'code'
         },
         onDelete:'CASCADE'
       },
