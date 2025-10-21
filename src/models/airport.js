@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         {
           foreignKey:'cityId',
           onDelete:'CASCADE',
-          onUpdate:'CASCADE'
         }
       )
       
