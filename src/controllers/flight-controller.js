@@ -31,6 +31,26 @@ async function createFlight(req, res) {
   }
 }
 
+async function getAllFlights(req,res){
+  try {
+    const flights = await FlightService.getAllFlights(req.query)
+    SuccessResponse.data = flights;
+    return res.status(StatusCodes.CREATED).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.message = error.message || "Something went wrong";
+    ErrorResponse.error = {
+      name: error.name || "Error",
+      message: error.message || "Unknown error",
+      stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
+    };
+
+    return res
+      .status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)
+      .json(ErrorResponse);
+  }
+}
+
 module.exports = {
   createFlight,
+  getAllFlights
 };
