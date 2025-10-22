@@ -19,6 +19,12 @@ async function createFlight(data){
     }
 }
 
+async function getAllFlights(filters){
+    let customFilter = {}
+    if(query.trips){
+        [departureAirportId, arrivalAirportId] = trips.split('-')
+    }
+}
 
 module.exports ={
     createFlight,
