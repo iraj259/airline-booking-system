@@ -23,6 +23,8 @@ async function getAllFlights(filters){
     let customFilter = {}
     if(query.trips){
         [departureAirportId, arrivalAirportId] = trips.split('-')
+        customFilter.departureAirportId = departureAirportId
+        customFilter.arrivalAirportId=arrivalAirportId
     }
 }
 
