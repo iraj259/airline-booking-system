@@ -1,4 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
+const {Op} = require('sequelize')
 const { FlightRepository } = require("../repositories");
 const flightRepository = new FlightRepository();
 const AppError = require("../utils/errors/app-error");
@@ -25,13 +26,20 @@ async function createFlight(data) {
   }
 }
 
-async function getAllFlights(filters) {
+async function getAllFlights(query) {
   let customFilter = {};
-  if (query.trips) {
-    [departureAirportId, arrivalAirportId] = trips.split("-");
-    customFilter.departureAirportId = departureAirportId;
-    customFilter.arrivalAirportId = arrivalAirportId;
+ if (query.trips) {
+  const [departureAirportId, arrivalAirportId] = query.trips.split("-");
+  customFilter.departureAirportId = departureAirportId;
+  customFilter.arrivalAirportId = arrivalAirportId;
+}
+
+if(query.price){
+  [minPrice, maxPrice] = query.price.split('-')
+  customFilter.price = {
+    [Op.between]:[minPrice, maxPrice]
   }
+}
   try {
     const flights = await flightRepository.getAllFlights(customFilter);
     return flights
@@ -44,5 +52,5 @@ async function getAllFlights(filters) {
 }
 
 module.exports = {
-  createFlight,
+  createFlight, getAllFlights
 };

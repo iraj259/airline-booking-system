@@ -6,6 +6,7 @@ const router = express.Router()
 
 // /api/v1/airplanes POST
 router.post('/', FlightMiddleware.validateCreateRequest ,FlightController.createFlight)
+router.get('/' ,FlightController.getAllFlights)
 
 
 module.exports = router
