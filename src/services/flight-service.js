@@ -40,6 +40,11 @@ if(query.price){
     [Op.between]:[minPrice, maxPrice]
   }
 }
+if(query.travelers){
+  customFilter.totalSeats={
+    [Op.gte]:query.travelers
+  }
+}
   try {
     const flights = await flightRepository.getAllFlights(customFilter);
     return flights
