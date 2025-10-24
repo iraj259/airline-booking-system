@@ -59,7 +59,7 @@ if (query.tripDate) {
 if(query.sort){
   const params = query.sort.split(',');
   const sortFilters = params.map((param)=>param.split('_'))
-  sortFilter  [sortFilters]
+  sortFilter = sortFilters
 }
   try {
     const flights = await flightRepository.getAllFlights(customFilter, sortFilter);
