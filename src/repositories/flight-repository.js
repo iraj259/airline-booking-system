@@ -13,13 +13,22 @@ class FlightRepository extends CrudRepository{
             include:[
             {
                model: Airplane,
-               required:true
+               required:true,
+               as:'airplane_detail'
             },{
                 model:Airport,
                 required:true,
-                // as:'DepartureAirport',
+                as:'departure_airport',
                 on:{
-                    col1:Sequelize.where(Sequelize.col("Flight.departureAirportId"),"=",Sequelize.col("Airport.code"))
+                    col1:Sequelize.where(Sequelize.col("Flight.departureAirportId"), "=", Sequelize.col("departure_airport.code"))
+                }
+            },
+            {
+                model:Airport,
+                required:true,
+                as:'arrival_airport',
+                on:{
+                    col1:Sequelize.where(Sequelize.col("Flight.arrivalAirportId"), "=", Sequelize.col("arrival_airport.code"))
                 }
             } 
         ]
