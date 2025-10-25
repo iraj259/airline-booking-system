@@ -1,5 +1,5 @@
 module.exports={
     ErrorResponse: require('./error-response'),
     SuccessResponse:require('./success-response'),
-    Enum:require('./enums')
+    Enums:require('./enums')
 }
